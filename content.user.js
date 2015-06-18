@@ -67,13 +67,17 @@ var initialize = function() {
 	var title = document.getElementsByClassName("hP")[0];
 	if (title != undefined) {
 		if (isIssue()) {
-			var aTag = document.createElement('a');
+			var aTag = document.getElementsByClassName("search-issue-marker")[0];
+			if (!aTag) {
+				aTag = document.createElement('a');
+				aTag.setAttribute('style', 'font-size: small;');
+				aTag.setAttribute('class', 'search-issue-marker');
+				aTag.innerHTML = "Search Issue";
+				title.parentNode.appendChild(aTag);
+			}
+      
 			aTag.setAttribute('href', 'https://issues.genexus.com/displaysearchissuesresults.aspx?' + standarizedTitle(title.textContent));
-			aTag.setAttribute('style', 'font-size: small;');
-			aTag.innerHTML = "Search Issue";
 			debug(title.textContent);
-
-			title.parentNode.appendChild(aTag);
 		}
 	}
 };
