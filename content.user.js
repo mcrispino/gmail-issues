@@ -3,7 +3,7 @@
 // @namespace   https://github.com/matiash/gmail-issues
 // @description Adds a link to Issue Tracker to Gmail
 // @include     https://mail.google.com/mail/*
-// @version     1.0
+// @version     1.0.1
 // @grant       none
 // ==/UserScript==
 
@@ -15,15 +15,25 @@ var debug = function(message) {
 	}
 };
 
+function emailIdentifier() {
+	var e_id = window.location.hash
+	var loc = e_id.indexOf("?");
+	if (loc > 0) {
+		e_id = e_id.substring(0, loc);
+	}
+	debug( e_id);
+	return e_id;
+}
+
 function hashHandler() {
-    this.oldHash = window.location.hash;
+    this.oldHash = emailIdentifier();
     this.Check;
 
     var that = this;
     var detect = function(){
-        if(that.oldHash!=window.location.hash){
+        if(that.oldHash!=emailIdentifier()){
             window.setTimeout(initialize, 100);
-            that.oldHash = window.location.hash;
+            that.oldHash = emailIdentifier();
         }
     };
     this.Check = setInterval(function() { detect(); }, 100);

@@ -3,7 +3,7 @@
 
   "name": "Gmail Issues",
   "description": "Adds a link to Rocha Issues to Gmail",
-  "version": "1.0",
+  "version": "1.0.1",
 
   "permissions": [
   ],
