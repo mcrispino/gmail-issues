@@ -78,9 +78,9 @@ var initialize = function() {
 	if (title != undefined) {
 		if (isIssue()) {
 			var aTag = document.createElement('a');
-			aTag.setAttribute('href', 'https://issues.genexus.com/displaysearchissuesresults.aspx?' + standarizedTitle(title.textContent));
+			aTag.setAttribute('href', 'https://issues.genexus.com/issueFinder.aspx?' + standarizedTitle(title.textContent));
 			aTag.setAttribute('style', 'font-size: small;');
-			aTag.innerHTML = "Search Issue";
+			aTag.innerHTML = "Open Issue";
 			debug(title.textContent);
 
 			title.parentNode.appendChild(aTag);
